@@ -134,6 +134,7 @@ class cierreCaja(QMainWindow):
         print(sql)
         cursor.execute(sql)
         conn.commit()
+        process1 = subprocess.run(['python','login.py'])
         self.close()
 
     def cancelar(self):

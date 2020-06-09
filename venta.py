@@ -63,7 +63,11 @@ class venta(QMainWindow):
         cursor = conn.cursor()
         cursor.execute("SELECT MAX(idVenta) FROM ventas")
         consultas = cursor.fetchone()
-        idVenta = int(consultas[0]) + 1
+        print(consultas)
+        if  consultas[0] == "none":
+            idVenta = 1
+        else:
+            idVenta = int(consultas[0]) + 1
         self.lblidVenta.setText(str(idVenta))
         conn.close()
         

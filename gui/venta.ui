@@ -1,0 +1,1070 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>venta</class>
+ <widget class="QMainWindow" name="venta">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1280</width>
+    <height>768</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1280</width>
+    <height>768</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>POS</string>
+  </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonFollowStyle</enum>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLCDNumber" name="lcdNumber">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>40</y>
+      <width>561</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>255</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Light">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>255</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Light">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Light">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="font">
+     <font>
+      <stylestrategy>PreferDefault</stylestrategy>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">self.lcdNumber.setStyleSheet(&quot;background-color: rgb(0, 255, 0)&quot;)
+</string>
+    </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhDigitsOnly|Qt::ImhFormattedNumbersOnly|Qt::ImhPreferNumbers</set>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="smallDecimalPoint">
+     <bool>false</bool>
+    </property>
+    <property name="digitCount">
+     <number>6</number>
+    </property>
+    <property name="mode">
+     <enum>QLCDNumber::Dec</enum>
+    </property>
+    <property name="segmentStyle">
+     <enum>QLCDNumber::Filled</enum>
+    </property>
+    <property name="value" stdset="0">
+     <double>0.000000000000000</double>
+    </property>
+    <property name="intValue" stdset="0">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnFinVenta">
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>520</y>
+      <width>160</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>FIN</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../icon/success.png</normaloff>../icon/success.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnBuscarArticulo">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>159</y>
+      <width>160</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string extracomment="Busca un Articulo por Nombre">Buscar Articulo</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../icon/search.png</normaloff>../icon/search.png</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnAbonarDeuda">
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>200</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Pago
+Clientes</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../icon/calculator-1.png</normaloff>../icon/calculator-1.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelTotal">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>221</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:600; text-decoration: underline;&quot;&gt;Total Venta $&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnCuentaClientes">
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>280</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Cuenta 
+Clientes</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../icon/notebook.png</normaloff>../icon/notebook.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnCerrarCaja">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>640</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Cerrar
+Caja</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../icon/safebox-4.png</normaloff>../icon/safebox-4.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnClientes">
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>440</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Clientes</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../icon/users.png</normaloff>../icon/users.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>159</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Codigo Artículo:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnAnularVenta">
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>360</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Anular 
+Venta</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../icon/forbidden.png</normaloff>../icon/forbidden.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblTicketVenta">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>640</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Ticket Venta :</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblNombreVendedor">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>680</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Vendedor     : </string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="listaVenta">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>210</y>
+      <width>1090</width>
+      <height>420</height>
+     </rect>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="alternatingRowColors">
+     <bool>true</bool>
+    </property>
+    <property name="showGrid">
+     <bool>false</bool>
+    </property>
+    <property name="gridStyle">
+     <enum>Qt::NoPen</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblNombreCajero">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>680</y>
+      <width>200</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>**********</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblidVenta">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>640</y>
+      <width>200</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>**********</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::PlainText</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnQuitarArticulo">
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>159</y>
+      <width>160</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>160</width>
+      <height>80</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Quitar Artículo</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../icon/error.png</normaloff>../icon/error.png</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnAgregarArticulo">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>159</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Agregar</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../icon/add-1.png</normaloff>../icon/add-1.png</iconset>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblFecha">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>700</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Fecha          : </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblFechaActual">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>700</y>
+      <width>200</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>**********</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblTitulo1">
+    <property name="geometry">
+     <rect>
+      <x>1160</x>
+      <y>40</y>
+      <width>101</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../icon/grocery-1.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+    <property name="openExternalLinks">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblTitulo2">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>50</y>
+      <width>421</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Almacén Don Tito&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Esmeralda 113 Villa San José El Melón&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtBuscarArticulo">
+    <property name="geometry">
+     <rect>
+      <x>139</x>
+      <y>160</y>
+      <width>661</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <property name="cursorPosition">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnSalir">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>640</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Salir</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../icon/exit-2.png</normaloff>../icon/exit-2.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnContar_2">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>640</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="BOTON">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>640</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblNombreVendedor_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>660</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>ID Usuario    :</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblUsuario">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>660</y>
+      <width>200</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>**********</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnEfectivo">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>640</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Efectivo 
+en Caja</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../icon/notes.png</normaloff>../icon/notes.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="displayNumber">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>40</y>
+      <width>561</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="BrightText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="BrightText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>85</red>
+          <green>255</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="BrightText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>80</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">self.displayNumber.setStyleSheet(&quot;background-color: rgb(0, 255, 0)&quot;)
+</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+    <property name="buttonSymbols">
+     <enum>QAbstractSpinBox::NoButtons</enum>
+    </property>
+    <property name="correctionMode">
+     <enum>QAbstractSpinBox::CorrectToPreviousValue</enum>
+    </property>
+    <property name="showGroupSeparator" stdset="0">
+     <bool>true</bool>
+    </property>
+    <property name="suffix">
+     <string comment="$" extracomment="$"/>
+    </property>
+    <property name="prefix">
+     <string notr="true" comment="$" extracomment="$"/>
+    </property>
+    <property name="maximum">
+     <number>1000000</number>
+    </property>
+    <property name="singleStep">
+     <number>0</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelTotal_2">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>40</y>
+      <width>51</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:72pt;&quot;&gt;$&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuBaseDeDatos">
+    <property name="title">
+     <string>Registros Listas</string>
+    </property>
+    <addaction name="actionProductos"/>
+    <addaction name="actionCategoriaProductos"/>
+    <addaction name="actionProveedores"/>
+    <addaction name="actionCliente"/>
+    <addaction name="actionComunas"/>
+    <addaction name="actionMediosDePagos"/>
+    <addaction name="actionUsuarios"/>
+   </widget>
+   <widget class="QMenu" name="menuConsultas">
+    <property name="title">
+     <string>Consultas</string>
+    </property>
+    <addaction name="actionEfectivoCaja"/>
+    <addaction name="actionConsulta_Ticket_de_Venta"/>
+   </widget>
+   <widget class="QMenu" name="menuAyuda">
+    <property name="title">
+     <string>Ayuda</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuReportes_2">
+    <property name="title">
+     <string>Reportes</string>
+    </property>
+    <addaction name="actionReportes_por_Dia"/>
+    <addaction name="actionVentas_por_Usuarios"/>
+    <addaction name="actionHistorial_Precio_Productos"/>
+    <addaction name="actionHistorico_Aperturas_Caja"/>
+   </widget>
+   <addaction name="menuBaseDeDatos"/>
+   <addaction name="menuConsultas"/>
+   <addaction name="menuReportes_2"/>
+   <addaction name="menuAyuda"/>
+  </widget>
+  <action name="actionProductos">
+   <property name="text">
+    <string>Lista de Productos</string>
+   </property>
+  </action>
+  <action name="actionCategoriaProductos">
+   <property name="text">
+    <string>Lista de Categoria Productos</string>
+   </property>
+  </action>
+  <action name="actionProveedores">
+   <property name="text">
+    <string>Lista de Proveedores</string>
+   </property>
+  </action>
+  <action name="actionMantenedor">
+   <property name="text">
+    <string>Mantenedor</string>
+   </property>
+  </action>
+  <action name="actionPagos_Proveedores">
+   <property name="text">
+    <string>Pagos Proveedores</string>
+   </property>
+  </action>
+  <action name="actionPOS">
+   <property name="text">
+    <string>POS</string>
+   </property>
+  </action>
+  <action name="actionClientes">
+   <property name="text">
+    <string>Clientes</string>
+   </property>
+  </action>
+  <action name="actionPago_Clientes">
+   <property name="text">
+    <string>Pago Clientes</string>
+   </property>
+  </action>
+  <action name="actionMedios_de_Pago">
+   <property name="text">
+    <string>Medios de Pago</string>
+   </property>
+  </action>
+  <action name="actionVendedores">
+   <property name="text">
+    <string>Vendedores</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>Datos Almacen</string>
+   </property>
+  </action>
+  <action name="actionUsuarios">
+   <property name="text">
+    <string>Lista de Usuarios</string>
+   </property>
+  </action>
+  <action name="actionCliente">
+   <property name="text">
+    <string>Lista de Clientes</string>
+   </property>
+  </action>
+  <action name="actionComunas">
+   <property name="text">
+    <string>Lista de Comunas</string>
+   </property>
+  </action>
+  <action name="actionMediosDePagos">
+   <property name="text">
+    <string>Lista de Medios de Pagos</string>
+   </property>
+  </action>
+  <action name="actionEfectivoCaja">
+   <property name="text">
+    <string>Consulta efectivo en Caja</string>
+   </property>
+  </action>
+  <action name="actionClientes_con_Deudas">
+   <property name="text">
+    <string>Clientes con Deuda</string>
+   </property>
+  </action>
+  <action name="actionReportes_por_Dia">
+   <property name="text">
+    <string>Ventas por día</string>
+   </property>
+  </action>
+  <action name="actionVentas_por_Usuarios">
+   <property name="text">
+    <string>Ventas por Usuario</string>
+   </property>
+  </action>
+  <action name="actionVentas_por_Usuario">
+   <property name="text">
+    <string>Cierres Caja</string>
+   </property>
+  </action>
+  <action name="actionEfectivo_en_Caja_2">
+   <property name="text">
+    <string>Efectivo en Caja</string>
+   </property>
+  </action>
+  <action name="actionComunas_2">
+   <property name="text">
+    <string>Comunas</string>
+   </property>
+  </action>
+  <action name="actionHistorial_Precio_Productos">
+   <property name="text">
+    <string>Historial Precio Productos</string>
+   </property>
+  </action>
+  <action name="actionHistorico_Aperturas_Caja">
+   <property name="text">
+    <string>Histórico Aperturas Caja</string>
+   </property>
+  </action>
+  <action name="actionConsulta_Ticket_de_Venta">
+   <property name="text">
+    <string>Consulta Ticket de Venta</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>txtBuscarArticulo</tabstop>
+  <tabstop>btnBuscarArticulo</tabstop>
+  <tabstop>btnQuitarArticulo</tabstop>
+  <tabstop>btnAbonarDeuda</tabstop>
+  <tabstop>btnCuentaClientes</tabstop>
+  <tabstop>btnAnularVenta</tabstop>
+  <tabstop>btnClientes</tabstop>
+  <tabstop>btnFinVenta</tabstop>
+  <tabstop>btnCerrarCaja</tabstop>
+  <tabstop>btnSalir</tabstop>
+  <tabstop>btnEfectivo</tabstop>
+  <tabstop>btnContar_2</tabstop>
+  <tabstop>BOTON</tabstop>
+  <tabstop>listaVenta</tabstop>
+  <tabstop>displayNumber</tabstop>
+  <tabstop>btnAgregarArticulo</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

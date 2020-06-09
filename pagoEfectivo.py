@@ -111,138 +111,19 @@ class window(QMainWindow):
                 datosDB = cursor.fetchall()
                 print(datosDB)
                 conn.close()
-
 # ********************************                EMPIEZA A IMPRIMIR               ********************************
-# create a dc (Device Context) object (actually a PyCDC)
-                dc = win32ui.CreateDC()
-                # convert the dc into a "printer dc"
-                dc.CreatePrinterDC("POS-PRINTER") #define la impresora a usar segun nombre que tiene en windows
-                # you need to set the map mode mainly so you know how
-                # to scale your output.  I do everything in points, so setting 
-                # the map mode as "twips" works for me.
-                dc.SetMapMode(win32con.MM_TWIPS) # 1440 per inch
-                # here's that scaling I mentioned:
-                scale_factor = 20 # i.e. 20 giros al punto
-                dc.StartDoc("TICKET DE VENTA POS") # INICIA LA IMPRESION DEL DOCUMENTO. ESTE ES UN STRIG QUE SE MUESTRA EN LA COLA DE IMRPESIÓN.
-                pen = win32ui.CreatePen(0, int(scale_factor), 0) # para dibujar algo necesitas un lapiz. Las variables son estilo de pluma, ancho de pluma y color de pluma.
-                # SelectObject is used to apply a pen or font object to a dc.
-                dc.SelectObject(pen)
-                # how about a font?  Lucida Console 10 point.
-                # I'm unsure how to tell if this failed.
-                font = win32ui.CreateFont({
-                    "name": "Lucida Console",
-                    "height": int(scale_factor * 10),               # tamaño de la letra
-                    "weight": 400,
-                })
-                # again with the SelectObject call.
-                dc.SelectObject(font)
-                # okay, now let's print something.
-                # TextOut takes x, y, and text values.
-                # the map mode determines whether y increases in an
-                # upward or downward direction; in MM_TWIPS mode, it
-                # advances up, so negative numbers are required to 
-                # go down the page.  If anyone knows why this is a
-                # "good idea" please email me; as far as I'm concerned
-                # it's garbage.
-                # 30 LÍNEAS DE TEXTO EN EL PAPEL
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<*****TEXTO DE 34 CARACTERES*****>") 
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"        ALMACÉN DON TITO          ")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"Esmeralda 123 Villa Sn José El Melón")
-                dc.EndPage()        
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"*") 
-                dc.EndPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"Nro Boleta : " + str(folioBoleta))
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<**************************>")
-                dc.EndPage()
-                dc.StartPage()
-                dc.TextOut(scale_factor * 0,10 * scale_factor * 0,"<Gracias por su preferencia>")
-                dc.EndPage()
-                # for completeness, I'll draw a line.
-                #from x = "1", y = "1"
-                #dc.MoveTo((scale_factor * 72, scale_factor * -72))
-                dc.MoveTo((scale_factor * 0, scale_factor * 0))
-                #to x = 6", y = 3"
-                #dc.LineTo((scale_factor * 6 * 72, scale_factor * 3 * -72))
-                dc.LineTo((scale_factor * 72 *  10, scale_factor * 0))
-                # must not forget to tell Windows we're done.
-                dc.EndDoc()
+                
+                
+                # CREAR EL ARCHIVO A IMPRIMIR
+                
+                
+                
+                subprocess.run(['python','imprimirVoucher.py'])
+
+
+
+
+
 ## ********************************                  FIN IMPRIMIR                  ********************************
                 QMessageBox.information(self, "Gracias", "Agradecemos su preferencia. Vuelva cuando guste.",QMessageBox.Ok)
                 self.close()

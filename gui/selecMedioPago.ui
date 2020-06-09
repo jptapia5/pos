@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>selecMedioPago</class>
+ <widget class="QDialog" name="selecMedioPago">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>273</width>
+    <height>288</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Seleccion Medio Pago</string>
+  </property>
+  <widget class="QPushButton" name="btnLibreta">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>180</y>
+     <width>160</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Libreta</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../icon/notebook.png</normaloff>../icon/notebook.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnEfectivo">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>90</y>
+     <width>160</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Efectivo</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../icon/notes.png</normaloff>../icon/notes.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lablTitulo">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>40</y>
+     <width>221</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>SELECCIONAR MEDIO 
+           DE PAGO</string>
+   </property>
+  </widget>
+  <widget class="QLCDNumber" name="lcdTotalPagar">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>180</y>
+     <width>131</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblIdUsuario">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>0</y>
+     <width>47</width>
+     <height>14</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>****</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblidVenta">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>10</y>
+     <width>41</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>******</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="tk">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>10</y>
+     <width>47</width>
+     <height>14</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ticket</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Usuario">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>0</y>
+     <width>47</width>
+     <height>14</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Usuario:</string>
+   </property>
+  </widget>
+  <zorder>lcdTotalPagar</zorder>
+  <zorder>btnLibreta</zorder>
+  <zorder>btnEfectivo</zorder>
+  <zorder>lablTitulo</zorder>
+  <zorder>lblIdUsuario</zorder>
+  <zorder>lblidVenta</zorder>
+  <zorder>tk</zorder>
+  <zorder>Usuario</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

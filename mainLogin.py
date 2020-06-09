@@ -51,7 +51,8 @@ class mainLogin(QMainWindow):
         montoFinal = 0
         #print(fecha)
 # ********************************** VALIDA SI INGRESÓ LOS DATOS REQUERIDOS **********************************
-        if (idUsuario and contrasena and montoInicial):
+        #if (idUsuario and contrasena and montoInicial):
+        if (idUsuario and contrasena):
                             conn = pymysql.connect(host='localhost',user='root',password='JPTapia123',db='mydb')
                             cursor = conn.cursor()
                             cursor.execute("SELECT contrasena FROM usuarios WHERE idUsuario = %s", idUsuario)

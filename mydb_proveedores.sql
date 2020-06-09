@@ -1,0 +1,58 @@
+-- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
+--
+-- Host: localhost    Database: mydb
+-- ------------------------------------------------------
+-- Server version	8.0.19
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `proveedores`
+--
+
+DROP TABLE IF EXISTS `proveedores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `proveedores` (
+  `idProveedor` int NOT NULL,
+  `nombreProveedor` varchar(60) DEFAULT NULL,
+  `contacto` varchar(30) DEFAULT NULL,
+  `fono` int DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `idComuna` int DEFAULT NULL,
+  `direccion` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`idProveedor`),
+  KEY `idComuna_idx` (`idComuna`),
+  CONSTRAINT `idComuna` FOREIGN KEY (`idComuna`) REFERENCES `comunas` (`idcomuna`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `proveedores`
+--
+
+LOCK TABLES `proveedores` WRITE;
+/*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
+INSERT INTO `proveedores` VALUES (0,'GENERICO','GENERICO',987654321,'GENERICO',1,'GENERICO'),(1,'CCU','JUAN PEREZ',12345678,'QUILLOTA',1,'CALLE 1'),(2,'EMBONOR','JOSÉ ALVAREZ',12345678,'correo@email.cl',1,'CALLE 2'),(3,'EVERCRYSP','PEDRO FARIAS',12345678,'correo@email.cl',1,'CALLE 3'),(4,'DISMARA','PATRICIO MARTINEZ',12345678,'correo@email.cl',1,'CALLE 4'),(5,'CENCOCAL','ENRIQUE IGLESIAS',12345678,'correo@email.cl',1,'CALLE 5'),(6,'SAN JORGE','PEDRO INFANTE',12345678,'correo@email.cl',1,'CALLE 6'),(7,'PF','ANTONIO AGUILAR',12345678,'correo@email.cl',1,'CALLE 7'),(8,'YORK','ARMANDO PUERTAS',12345678,'correo@email.cl',1,'CALLE 8'),(9,'SABORY','LEONEL MESI',12345678,'correo@email.cl',1,'CALLE 9'),(10,'SOPROLE','ELENA DE TROYA',12345678,'correo@email.cl',1,'CALLE 10'),(11,'TRENDY','FACUNDO SANTA MARIA',12345678,'correo@email.cl',1,'CALLE 11'),(12,'COLUN','MARIA CERDA',12345678,'correo@email.cl',1,'CALLE 12'),(13,'HELLMANS','PASCAL TORRES',12345678,'correo@email.cl',1,'CALLE 13'),(14,'MAGGI','STHEPHANIE TAPIA',12345678,'correo@email.cl',1,'CALLE 14'),(15,'LUCHETTI','KATHERINE CASTRO',12345678,'correo@email.cl',1,'CALLE 15'),(16,'LONCOLECHE','CAMILA VILLALOBOS',12345678,'correo@email.cl',1,'CALLE 16'),(17,'FEMACAL','BLANCA CERDA',12345678,'correo@email.cl',1,'CALLE 17'),(18,'SANTA ROSA','SERGIO ARANCIBIA',12345678,'correo@email.cl',1,'CALLE 18'),(19,'QUESOS OVALLE','HECTOR FUENTES',12345678,'correo@email.cl',1,'CALLE 19'),(20,'CARNES CATOS','CAROLINA GONZALEZ',12345678,'correo@email.cl',1,'CALLE 20'),(100,'TESTING','TEST',123456789,'TEST',58,'TEST');
+/*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-04-06 23:56:36

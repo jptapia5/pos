@@ -97,6 +97,16 @@ class Window(QMainWindow):
                 print(sql)
                 cursor.execute(sql)
             #******************************************   IMPRIMIR TICKET DE VENTA ********************************
+
+
+
+
+                subprocess.run(['python','imprimirVoucher.py'])
+
+
+
+            #******************************************   IMPRIMIR TICKET DE VENTA ********************************
+
                 QMessageBox.information(self, "Gracias", "Agradecemos su preferencia. Vuelva cuando guste.",QMessageBox.Ok)
                 conn.commit()
         conn.close()
