@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1295</width>
-    <height>768</height>
+    <height>780</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -262,7 +262,7 @@
       <hour>0</hour>
       <minute>0</minute>
       <second>0</second>
-      <year>2019</year>
+      <year>2021</year>
       <month>1</month>
       <day>1</day>
      </datetime>
@@ -313,7 +313,7 @@
       <hour>0</hour>
       <minute>0</minute>
       <second>0</second>
-      <year>2019</year>
+      <year>2021</year>
       <month>1</month>
       <day>1</day>
      </datetime>

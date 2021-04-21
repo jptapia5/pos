@@ -9,16 +9,18 @@ from PyQt5 import uic
 import time
 import datetime
 from PyQt5.QtPrintSupport import QPrintDialog, QPrinter, QPrintPreviewDialog
-#clase heredada de QMainWindow (Constructor Ventana)
+# clase heredada de QMainWindow (Constructor Ventana)
 
 # =============== CLASE visualizarImprimirExportar =================
 
+
 class consultaVentasDia(QMainWindow):
     def __init__(self):
-        #Iniciar el objeto
+        # Iniciar el objeto
         QMainWindow.__init__(self)
-        uic.loadUi("gui/consultaVentas.ui",self)
-        self.setWindowTitle("Visualizar, imprimir y exportar datos a PDF de Ventas por Fecha")
+        uic.loadUi("gui/consultaVentas.ui", self)
+        self.setWindowTitle(
+            "Visualizar, imprimir y exportar datos a PDF de Ventas por Fecha")
         self.setWindowIcon(QIcon("Qt.png"))
         self.btnVistaPrevia.clicked.connect(self.vistaPrevia)
         self.btnLimpiarTabla.clicked.connect(self.limpiarTabla)
@@ -27,24 +29,28 @@ class consultaVentasDia(QMainWindow):
         self.btnImprimir.clicked.connect(self.Imprimir)
         self.btnSalir.clicked.connect(self.Salir)
         self.documento = QTextDocument()
-        self.treeWidgetVentas.setFont(QFont(self.treeWidgetVentas.font().family(), 10, False))
+        self.treeWidgetVentas.setFont(
+            QFont(self.treeWidgetVentas.font().family(), 10, False))
         self.treeWidgetVentas.setRootIsDecorated(False)
-        self.treeWidgetVentas.setHeaderLabels(("Ticket", "Boleta", "Fecha", "Medio Pago", "Monto Venta", "Vendedor", ))
+        self.treeWidgetVentas.setHeaderLabels(
+            ("N° Ticket", "N° Boleta", "Fecha", "Medio Pago", "Monto Venta", "Vendedor", ))
         self.model = self.treeWidgetVentas.model()
         for indice, ancho in enumerate((250, 250, 250, 250), start=0):
-            self.model.setHeaderData(indice, Qt.Horizontal, Qt.AlignCenter, Qt.TextAlignmentRole)
+            self.model.setHeaderData(
+                indice, Qt.Horizontal, Qt.AlignCenter, Qt.TextAlignmentRole)
             self.treeWidgetVentas.setColumnWidth(indice, ancho)
         self.treeWidgetVentas.setAlternatingRowColors(True)
 
   # ======================= FUNCIONES ============================
-  #==============================================================
-  #==============================================================
-  #==============================================================
-  #==============================================================
-  #==============================================================
+  # ==============================================================
+  # ==============================================================
+  # ==============================================================
+  # ==============================================================
+  # ==============================================================
 
     def Buscar(self):
-        conn = pymysql.connect(host='localhost',user='root',password='JPTapia123',db='mydb')
+        conn = pymysql.connect(host='localhost', user='root',
+                               password='JPTapia123', db='mydb')
         cursor = conn.cursor()
         fechaDesde = self.dateEditDesde.date()
         fechaHasta = self.dateEditHasta.date()
@@ -52,17 +58,25 @@ class consultaVentasDia(QMainWindow):
         fechaHasta = fechaHasta.toPyDate()
         print(fechaDesde)
         print(fechaHasta)
-        cursor.execute("SELECT idVenta, folioBoleta, fechaVenta, idMedioPago, montoVenta, idUsuario FROM ventas WHERE fechaVenta BETWEEN %s AND %s ORDER BY idVenta ASC ; ", (fechaDesde,fechaHasta))
+        cursor.execute("SELECT idVenta, folioBoleta, fechaVenta, idMedioPago, montoVenta, idUsuario FROM ventas WHERE fechaVenta BETWEEN %s AND %s ORDER BY idVenta ASC ; ", (fechaDesde, fechaHasta))
         datosDB = cursor.fetchall()
-        conn.close()
         if datosDB:
             self.documento.clear()
             self.treeWidgetVentas.clear()
             datos = ""
             item_widget = []
             for dato in datosDB:
-                datos += "<tr><td>%s</td> <td>%s</td> <td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" %dato
-                item_widget.append(QTreeWidgetItem((str(dato[0]), str(dato[1]), str(dato[2]), str(dato[3]), str(dato[4]), str(dato[5]))))
+                datos += "<tr><td>%s</td> <td>%s</td> <td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" % dato
+                if (dato[3] == 1):
+                    medioPago = "Efectivo"
+                else:
+                    medioPago = "Libreta"
+                cursor.execute(
+                    "SELECT nombreUsuario FROM usuarios WHERE idUsuario = " + str(dato[5]))
+                consulta = cursor.fetchone()
+                usuario = str(consulta[0])
+                item_widget.append(QTreeWidgetItem((str(dato[0]), str(
+                    dato[1]), str(dato[2]), medioPago, str(dato[4]), usuario)))
             reporteHtml = """
 <!DOCTYPE html>
 <html>
@@ -133,7 +147,7 @@ tr:nth-child(even) {
     def limpiarTabla(self):
         self.documento.clear()
         self.treeWidgetVentas.clear()
-    
+
     def Salir(self):
         self.close()
 
@@ -146,7 +160,8 @@ tr:nth-child(even) {
             vista.resize(800, 600)
 
             exportarPDF = vista.findChildren(QToolBar)
-            exportarPDF[0].addAction(QIcon("exportarPDF.png"), "Exportar a PDF", self.exportarPDF)
+            exportarPDF[0].addAction(
+                QIcon("exportarPDF.png"), "Exportar a PDF", self.exportarPDF)
 
             vista.paintRequested.connect(self.vistaPreviaImpresion)
             vista.exec_()
@@ -192,6 +207,8 @@ tr:nth-child(even) {
         else:
             QMessageBox.critical(self, "Exportar a PDF", "No hay datos para exportar.   ",
                                  QMessageBox.Ok)
+
+
 app = QApplication(sys.argv)
 consultaVentasDia = consultaVentasDia()
 consultaVentasDia.show()

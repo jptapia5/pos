@@ -18,7 +18,7 @@ class consultaVentasDia(QMainWindow):
         #Iniciar el objeto
         QMainWindow.__init__(self)
         uic.loadUi("gui/consultaVentasUsuario.ui",self)
-        self.setWindowTitle("Visualizar, imprimir y exportar datos a PDF de Ventas por Fecha")
+        self.setWindowTitle("Visualizar Ventas por rango de Fecha")
         self.setWindowIcon(QIcon("Qt.png"))
         self.btnVistaPrevia.clicked.connect(self.vistaPrevia)
         self.btnLimpiarTabla.clicked.connect(self.limpiarTabla)
@@ -175,7 +175,7 @@ tr:nth-child(even) {
 
     def exportarPDF(self):
         if not self.documento.isEmpty():
-            nombreArchivo, _ = QFileDialog.getSaveFileName(self, "Exportar a PDF", "Listado de usuarios",
+            nombreArchivo, _ = QFileDialog.getSaveFileName(self, "Exportar a PDF", "Listado de Ventas",
                                                            "Archivos PDF (*.pdf);;All Files (*)",
                                                            options=QFileDialog.Options())
 

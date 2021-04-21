@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Abono dinero Clientes</string>
+   <string>Abono Cuenta Clientes</string>
   </property>
   <property name="styleSheet">
    <string notr="true">self.lcdNumber.setStyleSheet(&quot;background-color: rgb(0, 255, 0)&quot;)
@@ -479,10 +479,12 @@
     <property name="font">
      <font>
       <pointsize>13</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>Cancelar</string>
+     <string>CANCELAR</string>
     </property>
     <property name="icon">
      <iconset>
@@ -537,13 +539,16 @@
     <property name="font">
      <font>
       <pointsize>13</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="layoutDirection">
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="text">
-     <string>Aceptar</string>
+     <string>CALCULAR 
+ VUELTO</string>
     </property>
     <property name="icon">
      <iconset>
@@ -567,13 +572,15 @@
      <rect>
       <x>380</x>
       <y>60</y>
-      <width>131</width>
+      <width>141</width>
       <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>13</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">

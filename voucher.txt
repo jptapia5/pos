@@ -1,27 +1,29 @@
-************************************************
-     	        "ALMAC√âN DON TITO"
-                  ESMERALDA XXX
-                   EL MEL√ìN
-************************************************
-CLIENTE ID : xxxx
-TICKET :
-N¬∞ BOLETA:
-NOMBRE CLIENTE : xxxxxxxxx
-------------------------------------------------
-CANT -      ART√çCULOS 	             - SUBTOTAL
- ##  012345678901234567890123456789    $###.###
-
-
-
-
-
-
-
-
-------------------------------------------------
-CANT ARTICULOS : X
-TOTAL COMPRA: $xxx.xxx
-
-------------------------------------------------
-
-	   GRACIAS POR SU PREFERENCIA
+*****************************************
+    	     "ALMAC…N DON TITO"             
+             ESMERALDA 113               
+                EL MEL”N                 
+                                         
+                                         *****************************************
+           "TICKET DE VENTA"             
+                                         
+CLIENTE ID : 1
+TICKET : 14
+N∞ BOLETA: 14
+FECHA: 20-04-2021
+MEDIO DE PAGO : LIBRETA
+NOMBRE CLIENTE : MARIANELA ARANCIBIA CERDA
+                                         
+                                         
+-----------------------------------------
+CANT -      ARTÕCULOS 	  -       SUBTOTAL
+1 EL GRAN LIBRO DE ANDROID 2       $13.000
+-----------------------------------------
+                                         
+                                         
+CANT ARTICULOS : 1
+TOTAL DE COMPRA: $13.000
+-----------------------------------------
+SALDO PENDIENTE $95.000
+CUPO DISPONIBLE  $5.000
+-----------------------------------------
+       GRACIAS POR SU PREFERENCIA

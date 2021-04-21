@@ -414,7 +414,8 @@
      <enum>Qt::RightToLeft</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">self.displayNumber.setStyleSheet(&quot;background-color: rgb(0, 255, 0)&quot;)
+     <string notr="true">self.displayNumber.setStyleSheet(&quot;background-color: rgb(0, 0, 0)&quot;)
+
 </string>
     </property>
     <property name="alignment">
@@ -436,7 +437,7 @@
      <string extracomment="$"/>
     </property>
     <property name="maximum">
-     <number>99999999</number>
+     <number>999999999</number>
     </property>
     <property name="singleStep">
      <number>0</number>
@@ -536,7 +537,8 @@
      <enum>Qt::RightToLeft</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">self.displayNumber.setStyleSheet(&quot;background-color: rgb(0, 255, 0)&quot;)
+     <string notr="true">self.displayNumber.setStyleSheet(&quot;background-color: rgb(0, 0, 0)&quot;)
+
 </string>
     </property>
     <property name="alignment">
@@ -558,7 +560,7 @@
      <string extracomment="$"/>
     </property>
     <property name="maximum">
-     <number>99999999</number>
+     <number>999999999</number>
     </property>
     <property name="singleStep">
      <number>0</number>

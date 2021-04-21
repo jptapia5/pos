@@ -15,23 +15,24 @@ from PyQt5.QtPrintSupport import QPrintDialog, QPrinter, QPrintPreviewDialog
 class Window(QMainWindow):
     # Metodo constructor clase
     def __init__(self):
-        # Iniciar el objeto
         QMainWindow.__init__(self)
-        # Cargar archivo ui en objeto
-        uic.loadUi("gui/abonoCliente2.ui", self)
+        uic.loadUi("gui/abonoCliente.ui", self)
         self.statusBar().showMessage("Ingrese un pago realizado por un cliente.")
+        self.btnConsulta.clicked.connect(self.consultaCliente)
         self.btnAceptar.clicked.connect(self.aceptar)
         self.btnFin.clicked.connect(self.finalizar)
         self.btnCancelar.clicked.connect(self.cancelar)
         self.fechaActual()
+        locale.setlocale(locale.LC_ALL, 'de_DE.utf-8')
         if len(os.sys.argv) > 1:
             idUsuario = os.sys.argv[1]
-            idCliente = os.sys.argv[2]
+            print(idUsuario)
             self.lblidUsuario.setText(idUsuario)
-            self.lbIdlCliente.setText(idCliente)
-        self.consultaCliente()
-        self.btnFin.setEnabled(False)
-        locale.setlocale(locale.LC_ALL, 'de_DE.utf-8')
+# ********************************** INICIO ATAJOS CON TECLADO ****************************************
+        self.btnConsulta.setShortcut("Return")
+        self.btnConsulta.setShortcut("Intro")
+        self.btnCancelar.setShortcut("Esc")
+# ********************************** FIN ATAJOS CON TECLADO ****************************************
 
     def fechaActual(self):
         conn = pymysql.connect(host='localhost', user='root',
@@ -41,13 +42,12 @@ class Window(QMainWindow):
         cursor.execute(sql)
         fecha = cursor.fetchone()
         fecha = str(fecha[0])
-        # print(fecha)
         self.lblFechaActual.setText(fecha)
         conn.close()
+        self.btnFin.setEnabled(False)
 
     def consultaCliente(self):
-        idCliente = self.lbIdlCliente.text()
-        print("este abonara" + idCliente)
+        idCliente = self.txtCliente.text()
         if(idCliente):
             conn = pymysql.connect(
                 host='localhost', user='root', password='JPTapia123', db='mydb')
@@ -55,13 +55,30 @@ class Window(QMainWindow):
             cursor.execute(
                 "SELECT deudaTotal, nombreCliente, apellidoPaterno, apellidoMaterno FROM clientes WHERE idCliente = %s", idCliente)
             consulta = cursor.fetchone()
-            deuda = int(consulta[0])
-            nombre = consulta[1] + " " + consulta[2] + " " + consulta[3]
-            self.lcdSaldoAdeudado.setValue(deuda)
-            self.lblNombreCliente.setText(nombre)
-            self.txtTotalAbono.setEnabled(True)
-            self.txtPaga.setEnabled(True)
-            self.btnAceptar.setEnabled(True)
+            if consulta:
+                deuda = consulta[0]
+                nombre = consulta[1] + " " + consulta[2] + " " + consulta[3]
+                if (deuda == 0):
+                    self.lblNombreCliente.setText(nombre)
+                    QMessageBox.information(
+                        self, 'Información', "Cliente no tiene deuda", QMessageBox.Ok)
+                    self.txtTotalAbono.setEnabled(False)
+                    self.txtPaga.setEnabled(False)
+                    self.lcdSaldoAdeudado.setValue(0)
+                else:
+                    self.txtTotalAbono.setEnabled(True)
+                    self.txtPaga.setEnabled(True)
+                    self.lcdSaldoAdeudado.setValue(deuda)
+                    self.lblNombreCliente.setText(nombre)
+                    self.txtTotalAbono.setEnabled(True)
+                    self.txtPaga.setEnabled(True)
+                    self.txtCliente.setEnabled(True)
+                    self.btnAceptar.setEnabled(True)
+                    self.btnConsulta.setEnabled(True)
+                    self.btnFin.setEnabled(False)
+            else:
+                QMessageBox.information(
+                    self, 'Error', "Cliente no existe", QMessageBox.Ok)
             conn.close()
         else:
             QMessageBox.information(
@@ -69,16 +86,16 @@ class Window(QMainWindow):
 
     def aceptar(self):
         totalAbono = self.txtTotalAbono.value()
+        deudaTotal = self.lcdSaldoAdeudado.value()
         efectivo = self.txtPaga.value()
-        deuda = self.lcdSaldoAdeudado.value()
-        if(totalAbono and efectivo and (efectivo >= totalAbono) and (totalAbono <= deuda)):
-            vuelto = int(efectivo) - int(totalAbono)
+        if(totalAbono and efectivo and efectivo >= totalAbono and totalAbono <= deudaTotal):
+            vuelto = efectivo - totalAbono
             self.lcdVuelto.setValue(vuelto)
             self.btnFin.setEnabled(True)
             self.txtPaga.setEnabled(False)
         else:
             QMessageBox.information(
-                self, 'Error', "No ha ingresado correctamente algun monto", QMessageBox.Ok)
+                self, 'Error', "Error en los montos ingresados. Por Favor verifique", QMessageBox.Ok)
             self.btnFin.setEnabled(False)
 
     def finalizar(self):
@@ -91,7 +108,7 @@ class Window(QMainWindow):
             totalAbono) + " pesos?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if respuesta == QMessageBox.Yes:
             deudaTotal = self.lcdSaldoAdeudado.value()
-            idCliente = self.lbIdlCliente.text()
+            idCliente = self.txtCliente.text()
             montoPagado = self.txtTotalAbono.value()
             deudaActualizada = int(deudaTotal) - int(montoPagado)
             idUsuario = self.lblidUsuario.text()
@@ -127,7 +144,6 @@ class Window(QMainWindow):
                 cupoTotal = cupoTotal-saldoPendiente
 
                 # ********************************                EMPIEZA A IMPRIMIR               ********************************
-                idCliente = self.lbIdlCliente.text()
                 nombreCliente = self.lblNombreCliente.text()
                 totalVenta = 0
                 archivo = open('voucher.txt', 'w')
@@ -149,11 +165,10 @@ class Window(QMainWindow):
                 archivo.write(
                     '\n' + '                                         ')
                 archivo.write(
-                    '\n' + '                                         ')
-                archivo.write(
                     '\n' + '-----------------------------------------')
                 archivo.write(
                     '\n' + '-----------------------------------------')
+
                 archivo.write(
                     '\n' + '           EL CLIENTE HA CANCELADO      ')
                 archivo.write('\n' + '        LA SUMA DE $: ' +
@@ -170,7 +185,6 @@ class Window(QMainWindow):
                     '\n' + '-----------------------------------------')
                 archivo.write('\n' + '       GRACIAS POR SU PREFERENCIA')
                 archivo.close()
-                # IMPRIME EL ARCHIVO TXT
                 subprocess.run(['python', 'imprimirVoucher.py'])
     # ********************************                  FIN IMPRIMIR                  ********************************
             conn.close()

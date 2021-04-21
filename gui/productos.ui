@@ -535,44 +535,6 @@
      <bool>false</bool>
     </attribute>
    </widget>
-   <widget class="QComboBox" name="listaProveedores">
-    <property name="geometry">
-     <rect>
-      <x>880</x>
-      <y>120</y>
-      <width>251</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>15</pointsize>
-     </font>
-    </property>
-    <property name="currentIndex">
-     <number>-1</number>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblProveedores">
-    <property name="geometry">
-     <rect>
-      <x>750</x>
-      <y>120</y>
-      <width>121</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>13</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Proveedores :</string>
-    </property>
-   </widget>
    <zorder>btnGuardar</zorder>
    <zorder>btnFiltrar</zorder>
    <zorder>listaCategoria</zorder>
@@ -591,8 +553,6 @@
    <zorder>btnEliminar</zorder>
    <zorder>label</zorder>
    <zorder>listaProductos</zorder>
-   <zorder>listaProveedores</zorder>
-   <zorder>lblProveedores</zorder>
   </widget>
  </widget>
  <resources/>

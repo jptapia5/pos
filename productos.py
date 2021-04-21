@@ -192,7 +192,10 @@ class productos(QMainWindow):
             self.listaCategoria.addItem(categoria)
             self.listaCategoria.setCurrentIndex(-1)
             i = i + 1
-        conn.commit()
+        # conn.commit()
+
+        # conn.commit()
+
         conn.close()
         self.habilitarBotones()
         self.listaProductos.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -401,11 +404,12 @@ class productos(QMainWindow):
             self.contruirTabla()
             itemCategoria = self.listaCategoria.currentText()
             itemCategoria = str(itemCategoria)
+        
             cursor.execute(
                 "SELECT idCategoriaProducto FROM categoria_producto WHERE nombreCategoria = %s", itemCategoria)
             consultas = cursor.fetchone()
             idCategoriaProducto = consultas[0]
-            consultas = cursor.fetchall()
+            #consultas = cursor.fetchall()
             self.listaProductos.setRowCount(0)
             self.listaProductos.clearContents()
 
@@ -419,10 +423,10 @@ class productos(QMainWindow):
                         productos.idCategoriaProducto  \
                 FROM productos, precio_producto  \
                 WHERE productos.idProducto = precio_producto.idProducto  \
-                    AND productos.idCategoriaProducto = + '" + str(idCategoriaProducto) + "' \
+                    AND productos.idCategoriaProducto = '" + str(idCategoriaProducto) + "' \
 	                AND precio_producto.fecha = (SELECT MAX(FECHA) FROM mydb.precio_producto  \
 		   			                    		    WHERE productos.idProducto = precio_producto.idProducto );"
-
+            print(sql)
             cursor.execute(sql)
             consultas = cursor.fetchall()
             row = 0
@@ -437,7 +441,7 @@ class productos(QMainWindow):
                 precioCosto = QTableWidgetItem("$"+str(consulta[5]))
                 precioVenta = QTableWidgetItem("$"+str(consulta[6]))
                 categoria = (consulta[7])
-                # define el color a destacar
+                # DEFINE EL COLOR A DESTACAR
                 colorStock = consulta[2]
                 colorStockCritico = consulta[3]
                 colorStockMaximo = consulta[4]
@@ -446,14 +450,12 @@ class productos(QMainWindow):
                 cursor.execute(sql)
                 consulta = cursor.fetchone()
                 categoria = QTableWidgetItem(str(consulta[0]))
-                # consulta por el nombre del proveedor
+                # CONSULTA POR EL NOMBRE DEL PROVEEDOR PARA MOSTRARLO EN LA TABLA
                 sql = "SELECT proveedores.nombreProveedor \
                                             FROM proveedores \
                                             WHERE idProveedor = (SELECT idProveedor FROM producto_proveedor WHERE idProducto = '" + str(idProducto) + "');"
-                # print(sql)
                 cursor.execute(sql)
                 consulta = cursor.fetchone()
-                # print(consulta)
                 if (consulta == None):
                     proveedor = QTableWidgetItem(" ")
                 else:
