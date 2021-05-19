@@ -1,17 +1,16 @@
 *****************************************
     	     "ALMACÉN DON TITO"             
              ESMERALDA 113               
-                EL MELÓN                 
-                                         
-                                         *****************************************
+                EL MELÓN                 *****************************************
+
            "TICKET DE VENTA"             
                                          
-CLIENTE ID : 1
-TICKET : 14
-N° BOLETA: 14
-FECHA: 20-04-2021
-MEDIO DE PAGO : LIBRETA
-NOMBRE CLIENTE : MARIANELA ARANCIBIA CERDA
+CLIENTE ID : 0
+TICKET : 15
+N° BOLETA: 15
+FECHA: 14-05-2021
+MEDIO DE PAGO : EFECTIVO
+NOMBRE CLIENTE : sin identificar
                                          
                                          
 -----------------------------------------
@@ -22,8 +21,5 @@ CANT -      ARTÍCULOS 	  -       SUBTOTAL
                                          
 CANT ARTICULOS : 1
 TOTAL DE COMPRA: $13.000
------------------------------------------
-SALDO PENDIENTE $95.000
-CUPO DISPONIBLE  $5.000
 -----------------------------------------
        GRACIAS POR SU PREFERENCIA

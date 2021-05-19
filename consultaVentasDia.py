@@ -9,9 +9,7 @@ from PyQt5 import uic
 import time
 import datetime
 from PyQt5.QtPrintSupport import QPrintDialog, QPrinter, QPrintPreviewDialog
-# clase heredada de QMainWindow (Constructor Ventana)
-
-# =============== CLASE visualizarImprimirExportar =================
+import locale
 
 
 class consultaVentasDia(QMainWindow):
@@ -33,20 +31,32 @@ class consultaVentasDia(QMainWindow):
             QFont(self.treeWidgetVentas.font().family(), 10, False))
         self.treeWidgetVentas.setRootIsDecorated(False)
         self.treeWidgetVentas.setHeaderLabels(
-            ("N° Ticket", "N° Boleta", "Fecha", "Medio Pago", "Monto Venta", "Vendedor", ))
+            ("Fecha", "N° Boleta", "N° Ticket", "Medio Pago", "Monto Venta", "Vendedor", ))
         self.model = self.treeWidgetVentas.model()
         for indice, ancho in enumerate((250, 250, 250, 250), start=0):
             self.model.setHeaderData(
                 indice, Qt.Horizontal, Qt.AlignCenter, Qt.TextAlignmentRole)
             self.treeWidgetVentas.setColumnWidth(indice, ancho)
         self.treeWidgetVentas.setAlternatingRowColors(True)
-
+        locale.setlocale(locale.LC_ALL, 'de_DE.utf-8')
+        conn = pymysql.connect(host='localhost', user='root',
+                               password='JPTapia123', db='mydb')
+        cursor = conn.cursor()
+        cursor.execute("SELECT idUsuario,nombreUsuario FROM usuarios")
+        lista = cursor.fetchall()
+        self.listaUsuarios.clear()
+        i = 0
+        while i < len(lista):
+            nombreDeUsuarios = (str(lista[i]))
+            idDeUsuarios = nombreDeUsuarios[1:5]
+            nombreDeUsuarios = nombreDeUsuarios[8:]
+            fin = nombreDeUsuarios.find(")")
+            nombreDeUsuarios = nombreDeUsuarios[:fin-1]
+            usuarios = idDeUsuarios + " " + nombreDeUsuarios
+            self.listaUsuarios.addItem(usuarios)
+            self.listaUsuarios.setCurrentIndex(-1)
+            i = i + 1
   # ======================= FUNCIONES ============================
-  # ==============================================================
-  # ==============================================================
-  # ==============================================================
-  # ==============================================================
-  # ==============================================================
 
     def Buscar(self):
         conn = pymysql.connect(host='localhost', user='root',
@@ -56,9 +66,15 @@ class consultaVentasDia(QMainWindow):
         fechaHasta = self.dateEditHasta.date()
         fechaDesde = fechaDesde.toPyDate()
         fechaHasta = fechaHasta.toPyDate()
-        print(fechaDesde)
-        print(fechaHasta)
-        cursor.execute("SELECT idVenta, folioBoleta, fechaVenta, idMedioPago, montoVenta, idUsuario FROM ventas WHERE fechaVenta BETWEEN %s AND %s ORDER BY idVenta ASC ; ", (fechaDesde, fechaHasta))
+
+        # idUsuario =
+        indexListaUsuarios = self.listaUsuarios.currentIndex()
+        if (indexListaUsuarios != -1):
+            itemUsuario = self.listaUsuarios.currentText()
+            itemUsuario = str(itemUsuario)
+            idUsuario = itemUsuario[0:4]
+            print(idUsuario)
+        cursor.execute("SELECT fechaVenta, idVenta, folioBoleta, idMedioPago, montoVenta, idUsuario FROM ventas WHERE idUsuario = %s AND fechaVenta BETWEEN %s  AND %s ORDER BY idVenta ASC ; ", (idUsuario,fechaDesde, fechaHasta))
         datosDB = cursor.fetchall()
         if datosDB:
             self.documento.clear()
@@ -76,7 +92,8 @@ class consultaVentasDia(QMainWindow):
                 consulta = cursor.fetchone()
                 usuario = str(consulta[0])
                 item_widget.append(QTreeWidgetItem((str(dato[0]), str(
-                    dato[1]), str(dato[2]), medioPago, str(dato[4]), usuario)))
+                    dato[1]), str(dato[2]), medioPago, str(locale.format('%d', dato[4], 1)
+                                                           ), usuario)))
             reporteHtml = """
 <!DOCTYPE html>
 <html>
@@ -108,17 +125,17 @@ th {
 tr:nth-child(even) {
                     background-color: #dddddd;
                    }
-#lateral { width: 15px; }
+# lateral { width: 15px; }
 </style>
 <div id="lateral">
 </head>
 <body>
-<h3>LISTADO DE USUARIOS<br/></h3>
+<h3>LISTADO DE VENTAS<br/></h3>
 <table align="left" width="100%" cellspacing="0">
   <tr>
-    <th>Ticket</th>
-    <th>Boleta</th>
     <th>Fecha</th>
+    <th>Boleta</th>
+    <th>Ticket</th>
     <th>Medio Pago</th>
     <th>Monto Venta</th>
     <th>Vendedor</th>
@@ -189,7 +206,7 @@ tr:nth-child(even) {
 
     def exportarPDF(self):
         if not self.documento.isEmpty():
-            nombreArchivo, _ = QFileDialog.getSaveFileName(self, "Exportar a PDF", "Listado de usuarios",
+            nombreArchivo, _ = QFileDialog.getSaveFileName(self, "Exportar a PDF", "Listado de Ventas",
                                                            "Archivos PDF (*.pdf);;All Files (*)",
                                                            options=QFileDialog.Options())
 

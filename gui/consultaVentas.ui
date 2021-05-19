@@ -44,9 +44,9 @@
     <property name="geometry">
      <rect>
       <x>510</x>
-      <y>30</y>
+      <y>10</y>
       <width>201</width>
-      <height>41</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
@@ -297,7 +297,7 @@
       <x>430</x>
       <y>100</y>
       <width>111</width>
-      <height>41</height>
+      <height>40</height>
      </rect>
     </property>
     <property name="font">
@@ -345,10 +345,10 @@
    <widget class="QPushButton" name="btnConsultar">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>1030</x>
       <y>100</y>
-      <width>131</width>
-      <height>41</height>
+      <width>251</width>
+      <height>40</height>
      </rect>
     </property>
     <property name="font">
@@ -368,6 +368,36 @@
       <width>40</width>
       <height>40</height>
      </size>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="listaUsuarios">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>100</y>
+      <width>331</width>
+      <height>40</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>100</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Usuario :</string>
     </property>
    </widget>
   </widget>
