@@ -59,6 +59,7 @@ class consultaVentasDia(QMainWindow):
   # ======================= FUNCIONES ============================
 
     def Buscar(self):
+        self.treeWidgetVentas.clear()
         conn = pymysql.connect(host='localhost', user='root',
                                password='JPTapia123', db='mydb')
         cursor = conn.cursor()
@@ -66,15 +67,16 @@ class consultaVentasDia(QMainWindow):
         fechaHasta = self.dateEditHasta.date()
         fechaDesde = fechaDesde.toPyDate()
         fechaHasta = fechaHasta.toPyDate()
-
-        # idUsuario =
         indexListaUsuarios = self.listaUsuarios.currentIndex()
         if (indexListaUsuarios != -1):
             itemUsuario = self.listaUsuarios.currentText()
             itemUsuario = str(itemUsuario)
             idUsuario = itemUsuario[0:4]
-            print(idUsuario)
-        cursor.execute("SELECT fechaVenta, idVenta, folioBoleta, idMedioPago, montoVenta, idUsuario FROM ventas WHERE idUsuario = %s AND fechaVenta BETWEEN %s  AND %s ORDER BY idVenta ASC ; ", (idUsuario,fechaDesde, fechaHasta))
+            print("id usuario = = =" + idUsuario)
+            cursor.execute("SELECT fechaVenta, idVenta, folioBoleta, idMedioPago, montoVenta, idUsuario FROM ventas WHERE idUsuario = %s AND fechaVenta BETWEEN %s  AND %s ORDER BY idVenta ASC ; ", (idUsuario, fechaDesde, fechaHasta))
+        else:
+            cursor.execute(
+                "SELECT fechaVenta, idVenta, folioBoleta, idMedioPago, montoVenta, idUsuario FROM ventas WHERE fechaVenta BETWEEN %s  AND %s ORDER BY idVenta ASC ; ", (fechaDesde, fechaHasta))
         datosDB = cursor.fetchall()
         if datosDB:
             self.documento.clear()
